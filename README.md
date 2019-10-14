@@ -18,7 +18,10 @@ Additional arguments to pass to Snakemake.
 
 ## Example usage
 
+```
 uses: snakemake/snakemake-github-action@v1.1
 with:
   directory: '.test'
+  snakefile: workflow/Snakefile
   args: '--use-conda'
+```
