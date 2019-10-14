@@ -1,0 +1,17 @@
+name: snakemake
+description: Run Snakemake on the repository
+inputs:
+  directory:
+    description: Working directory for the execution
+    required: true
+    default: .test
+  args:
+    description: Additional Snakemake arguments to use
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.directory }}
+    - ${{ inputs.args }}
