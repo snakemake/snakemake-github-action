@@ -1,8 +1,3 @@
-# snakemake-github-action
-A Github action for running a Snakemake workflow
-
-
-
 # Snakemake github action
 
 This action runs Snakemake on the repository.
