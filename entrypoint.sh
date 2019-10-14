@@ -2,5 +2,5 @@
 
 export PATH=/opt/conda/bin:$PATH
 
-snakemake --directory $1 $2
+snakemake --directory $1 --snakefile $2 $3
 

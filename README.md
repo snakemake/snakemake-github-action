@@ -13,6 +13,10 @@ This action runs Snakemake on the repository.
 
 **Required** The working directory to use. Default `.test`.
 
+### `snakefile`
+
+The Snakefile containing the workflow description. Default `Snakefile`.
+
 ### `args`
 
 Additional arguments to pass to Snakemake.

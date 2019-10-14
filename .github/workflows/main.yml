@@ -14,3 +14,4 @@ jobs:
     - uses: ./
       with:
         directory: .test
+        snakefile: .test/Snakefile

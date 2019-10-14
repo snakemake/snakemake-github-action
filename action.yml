@@ -5,6 +5,9 @@ inputs:
     description: Working directory for the execution
     required: true
     default: .test
+  snakefile:
+    description: Snakefile containing the workflow description
+    default: Snakefile
   args:
     description: Additional Snakemake arguments to use
     required: false
@@ -14,4 +17,5 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.directory }}
+    - ${{ inputs.snakefile }}
     - ${{ inputs.args }}
