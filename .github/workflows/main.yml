@@ -11,6 +11,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - uses: snakemake/snakemake-github-action
+    - uses: .
       with:
         directory: .test
