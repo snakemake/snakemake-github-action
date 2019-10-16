@@ -1,4 +1,4 @@
-#!/bin/sh -l
+#!/bin/bash -l
 
 export PATH=/opt/conda/bin:$PATH
 
