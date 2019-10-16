@@ -6,5 +6,5 @@ export PATH=/opt/conda/bin:$PATH
 eval "$4"
 
 # run snakemake with given args
-snakemake --directory $1 --snakefile $2 $3
+snakemake --directory $1 --snakefile $2 --show-failed-logs $3
 
