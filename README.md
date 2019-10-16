@@ -26,4 +26,6 @@ Additional arguments to pass to Snakemake.
 uses: snakemake/snakemake-github-action@v1.1
 with:
   directory: '.test'
+  snakefile: 'workflow/Snakefile'
   args: '--use-conda'
+  stagein: '' # additional preliminary commands to run (can be multiline)

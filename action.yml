@@ -18,6 +18,10 @@ inputs:
     description: Additional Snakemake arguments to use
     required: false
     default: ''
+  stagein:
+    description: Additional steps to prepare the workflow for execution
+    required: false
+    default: ''
 
 runs:
   using: 'docker'
@@ -26,3 +30,4 @@ runs:
     - ${{ inputs.directory }}
     - ${{ inputs.snakefile }}
     - ${{ inputs.args }}
+    - ${{ inputs.stagein }}
