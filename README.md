@@ -1,8 +1,3 @@
-# snakemake-github-action
-A Github action for running a Snakemake workflow
-
-
-
 # Snakemake github action
 
 This action runs Snakemake on the repository.
@@ -21,11 +16,17 @@ The Snakefile containing the workflow description. Default `Snakefile`.
 
 Additional arguments to pass to Snakemake.
 
+### `stagein`
+
+Preliminary commands to run before the workflow execution.
+
 ## Example usage
 
-uses: snakemake/snakemake-github-action@v1.1
+```
+uses: snakemake/snakemake-github-action@v1.2
 with:
   directory: '.test'
   snakefile: 'workflow/Snakefile'
   args: '--use-conda'
   stagein: '' # additional preliminary commands to run (can be multiline)
+```
