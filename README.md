@@ -23,7 +23,7 @@ Preliminary commands to run before the workflow execution.
 ## Example usage
 
 ```
-uses: snakemake/snakemake-github-action@v1.3
+uses: snakemake/snakemake-github-action@v1.4.0
 with:
   directory: '.test'
   snakefile: 'workflow/Snakefile'
