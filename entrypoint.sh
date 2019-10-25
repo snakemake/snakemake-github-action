@@ -1,6 +1,4 @@
-#!/bin/bash -l
-
-export PATH=/opt/conda/bin:$PATH
+#!/bin/bash
 
 # run given stagein command
 eval "$4"
