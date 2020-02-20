@@ -22,7 +22,7 @@ Preliminary commands to run before the workflow execution.
 
 ## Example usage
 
-```
+```yaml
 uses: snakemake/snakemake-github-action@v1.4.0
 with:
   directory: '.test'
