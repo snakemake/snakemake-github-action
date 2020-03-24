@@ -24,13 +24,13 @@ Preliminary commands to run before the workflow execution.
 
 ```
 - name: Linting
-  uses: snakemake/snakemake-github-action@v1
+  uses: snakemake/snakemake-github-action@v1.5.1
   with:
     directory: '.test'
     snakefile: 'workflow/Snakefile'
     args: '--lint'
 - name: Testing
-  uses: snakemake/snakemake-github-action@v1
+  uses: snakemake/snakemake-github-action@v1.5.1
   with:
     directory: '.test'
     snakefile: 'workflow/Snakefile'
