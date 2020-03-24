@@ -23,10 +23,17 @@ Preliminary commands to run before the workflow execution.
 ## Example usage
 
 ```
-uses: snakemake/snakemake-github-action@v1.4.0
-with:
-  directory: '.test'
-  snakefile: 'workflow/Snakefile'
-  args: '--use-conda'
-  stagein: '' # additional preliminary commands to run (can be multiline)
+- name: Linting
+  uses: snakemake/snakemake-github-action@v1.4.0
+  with:
+    directory: '.test'
+    snakefile: 'workflow/Snakefile'
+    args: '--lint'
+- name: Testing
+  uses: snakemake/snakemake-github-action@v1.4.0
+  with:
+    directory: '.test'
+    snakefile: 'workflow/Snakefile'
+    args: '--use-conda'
+    stagein: '' # additional preliminary commands to run (can be multiline)
 ```
