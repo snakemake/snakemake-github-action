@@ -34,6 +34,6 @@ Preliminary commands to run before the workflow execution.
   with:
     directory: '.test'
     snakefile: 'workflow/Snakefile'
-    args: '--use-conda'
+    args: '--cores 1 --use-conda'
     stagein: '' # additional preliminary commands to run (can be multiline)
 ```

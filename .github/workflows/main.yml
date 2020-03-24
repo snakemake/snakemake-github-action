@@ -15,3 +15,4 @@ jobs:
       with:
         directory: .test
         snakefile: .test/Snakefile
+        args: "--cores 1"
