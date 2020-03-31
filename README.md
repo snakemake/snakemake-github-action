@@ -22,7 +22,7 @@ Preliminary commands to run before the workflow execution.
 
 ## Example usage
 
-```
+```yaml
 - name: Linting
   uses: snakemake/snakemake-github-action@v1.5.1
   with:
