@@ -1,3 +1,3 @@
-FROM snakemake/snakemake:v5.12.1
+FROM snakemake/snakemake:v5.14.0
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
