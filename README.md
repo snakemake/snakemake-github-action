@@ -24,16 +24,16 @@ Preliminary commands to run before the workflow execution.
 
 ```yaml
 - name: Linting
-  uses: snakemake/snakemake-github-action@v1.5.3
+  uses: snakemake/snakemake-github-action@v1.6.0
   with:
     directory: '.test'
     snakefile: 'workflow/Snakefile'
     args: '--lint'
 - name: Testing
-  uses: snakemake/snakemake-github-action@v1.5.3
+  uses: snakemake/snakemake-github-action@v1.6.0
   with:
     directory: '.test'
     snakefile: 'workflow/Snakefile'
-    args: '--cores 1 --use-conda --conda-cleanup-pkgs'
+    args: '--cores 1 --use-conda --conda-cleanup-pkgs cache'
     stagein: '' # additional preliminary commands to run (can be multiline)
 ```
