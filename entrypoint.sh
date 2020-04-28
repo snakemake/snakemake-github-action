@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir -p /github/workspace/.conda
+
 # run given stagein command
 eval "$4"
 
