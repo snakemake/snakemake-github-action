@@ -1,4 +1,4 @@
-FROM snakemake/snakemake:v5.15.0
+FROM snakemake/snakemake:v5.18.0
 COPY entrypoint.sh /entrypoint.sh
 ENV CONDA_ENVS_PATH /github/workspace/.conda
 ENTRYPOINT ["/entrypoint.sh"]
