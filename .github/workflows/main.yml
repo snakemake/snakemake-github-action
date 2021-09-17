@@ -11,8 +11,22 @@ jobs:
     
     steps:
     - uses: actions/checkout@v1
-    - uses: ./
+
+    - name: Test Action
+      uses: ./
       with:
         directory: .test
         snakefile: .test/Snakefile
         args: "--cores 1"
+
+    - name: Test containerize commmand
+      uses: ./
+      with:
+        directory: .test
+        snakefile: .test/Snakefile
+        args: "--cores 1"
+        containerize: true
+      
+    - name: Echo Dockerfile
+      run: |
+        echo Dockerfile
