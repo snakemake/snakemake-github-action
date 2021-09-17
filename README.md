@@ -20,6 +20,10 @@ Additional arguments to pass to Snakemake.
 
 Preliminary commands to run before the workflow execution.
 
+### `containerize`
+
+Only generates a container image specification (in the form of a Dockerfile) that contains all required environments. Defaults to `false`.
+
 ## Example usage
 
 ```yaml
