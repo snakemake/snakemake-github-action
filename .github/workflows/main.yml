@@ -27,6 +27,10 @@ jobs:
         args: "--cores 1"
         containerize: true
       
-    - name: Echo Dockerfile
+    - name: Show Content
       run: |
-        echo Dockerfile
+        ls -alh
+  
+    - name: Show Dockerfile
+      run: |
+        cat Dockerfile
