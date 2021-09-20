@@ -22,10 +22,10 @@ inputs:
     description: Additional steps to prepare the workflow for execution
     required: false
     default: ''
-  containerize:
-    description: Only generates a container image specification (in the form of a Dockerfile) that contains all required environments
+  task:
+    description: Whether to run Snakemake or to generate a container image specification (in the form of a Dockerfile) that contains all required environments. Can be either `run` or `containerize` (defaults to `run`)
     required: false
-    default: false
+    default: 'run'
 
 runs:
   using: 'docker'
@@ -35,4 +35,4 @@ runs:
     - ${{ inputs.snakefile }}
     - ${{ inputs.args }}
     - ${{ inputs.stagein }}
-    - ${{ inputs.containerize }}
+    - ${{ inputs.task }}

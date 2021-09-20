@@ -20,9 +20,9 @@ Additional arguments to pass to Snakemake.
 
 Preliminary commands to run before the workflow execution.
 
-### `containerize`
+### `task`
 
-Only generates a container image specification (in the form of a Dockerfile) that contains all required environments. Defaults to `false`.
+Whether to run Snakemake or to generate a container image specification (in the form of a Dockerfile) that contains all required environments. Can be either `run` or `containerize` (defaults to `run`).
 
 ## Example usage
 

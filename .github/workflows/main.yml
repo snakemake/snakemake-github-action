@@ -25,7 +25,7 @@ jobs:
         directory: .test
         snakefile: .test/Snakefile
         args: "--cores 1"
-        containerize: true
+        task: "containerize"
       
     - name: Show Content
       run: |
