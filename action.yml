@@ -22,6 +22,10 @@ inputs:
     description: Additional steps to prepare the workflow for execution
     required: false
     default: ''
+  task:
+    description: Whether to run Snakemake or to generate a container image specification.
+    required: false
+    default: 'run'
 
 runs:
   using: 'docker'
@@ -31,3 +35,4 @@ runs:
     - ${{ inputs.snakefile }}
     - ${{ inputs.args }}
     - ${{ inputs.stagein }}
+    - ${{ inputs.task }}
