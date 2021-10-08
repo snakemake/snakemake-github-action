@@ -46,5 +46,5 @@ Whether to run Snakemake or to generate a container image specification (in the 
   uses: snakemake/snakemake-github-action@v1
   with:
     snakefile: 'workflow/Snakefile'
-    run: 'containerize'
+    task: 'containerize'
 ```
