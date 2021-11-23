@@ -13,7 +13,7 @@ jobs:
       - uses: GoogleCloudPlatform/release-please-action@v2
         id: release
         with:
-          release-type: go
+          release-type: go # just no update of version anywhere needed
           package-name: ${{env.ACTION_NAME}}
 
       - uses: actions/checkout@v2
