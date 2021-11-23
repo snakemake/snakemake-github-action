@@ -15,7 +15,6 @@ jobs:
         with:
           release-type: go
           package-name: ${{env.ACTION_NAME}}
-          command: github-release
 
       - uses: actions/checkout@v2
 
