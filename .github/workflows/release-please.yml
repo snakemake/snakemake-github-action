@@ -13,7 +13,7 @@ jobs:
       - uses: GoogleCloudPlatform/release-please-action@v2
         id: release
         with:
-          release-type: simple
+          release-type: go
           package-name: ${{env.ACTION_NAME}}
           command: github-release
 
