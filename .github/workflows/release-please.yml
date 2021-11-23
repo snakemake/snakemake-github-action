@@ -17,6 +17,7 @@ jobs:
           package-name: ${{env.ACTION_NAME}}
 
       - uses: actions/checkout@v2
+        if: ${{ steps.release.outputs.release_created }}
 
       - name: tag major and minor versions
         if: ${{ steps.release.outputs.release_created }}
