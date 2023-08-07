@@ -26,6 +26,10 @@ inputs:
     description: Whether to run Snakemake or to generate a container image specification.
     required: false
     default: 'run'
+  show-disk-usage-on-error:
+    descriptions: Whether to return the used disk space on failing.
+    required: false
+    default: false
 
 runs:
   using: 'docker'
@@ -36,3 +40,4 @@ runs:
     - ${{ inputs.args }}
     - ${{ inputs.stagein }}
     - ${{ inputs.task }}
+    - ${{ input.show-disk-usage-on-error }}
