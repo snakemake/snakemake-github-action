@@ -15,9 +15,7 @@ elif [ "$5" = 'run' ] ; then
         if [[ "$6" = true ]]; then
             # return disk usage and space on failing
             df -h
-            echo "du home\n"
-            du -h -d3 /github/home
-            echo "du working directory\n"
+            printf "disk usage working directory"
             du -h -d3 $1
         fi
         exit 1
