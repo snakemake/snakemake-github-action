@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.25.1](https://www.github.com/snakemake/snakemake-github-action/compare/v1.25.0...v1.25.1) (2023-08-07)
+
+
+### Bug Fixes
+
+* correctly fail when printing disk space ([#33](https://www.github.com/snakemake/snakemake-github-action/issues/33)) ([041738e](https://www.github.com/snakemake/snakemake-github-action/commit/041738e12848c0e80d45ad4e82656d6090b64e34))
+* improve error handling logic ([#35](https://www.github.com/snakemake/snakemake-github-action/issues/35)) ([bdc87e0](https://www.github.com/snakemake/snakemake-github-action/commit/bdc87e0b8a9a15af393c9ba271ab6fb7318e37bd))
+
 ## [1.25.0](https://www.github.com/snakemake/snakemake-github-action/compare/v1.24.0...v1.25.0) (2023-08-07)
 
 
