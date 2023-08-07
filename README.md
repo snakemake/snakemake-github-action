@@ -24,6 +24,10 @@ Preliminary commands to run before the workflow execution.
 
 Whether to run Snakemake or to generate a container image specification (in the form of a Dockerfile) that contains all required environments. Can be either `run` or `containerize`. Default `run`.
 
+### `show-disk-usage-on-error`
+
+Whether used disk space shall be printed if Snakemake fails. Can be either `true` or `false` (default: `false`).
+
 ## Example usage
 
 ```yaml
@@ -41,6 +45,8 @@ Whether to run Snakemake or to generate a container image specification (in the 
     snakefile: 'workflow/Snakefile'
     args: '--cores 1 --use-conda --conda-cleanup-pkgs cache'
     stagein: '' # additional preliminary commands to run (can be multiline)
+    show-disk-usage-on-error: true
+
 
 - name: Create container file
   uses: snakemake/snakemake-github-action@v1
