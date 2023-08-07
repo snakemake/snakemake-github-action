@@ -40,4 +40,4 @@ runs:
     - ${{ inputs.args }}
     - ${{ inputs.stagein }}
     - ${{ inputs.task }}
-    - ${{ input.show-disk-usage-on-error }}
+    - ${{ inputs.show-disk-usage-on-error }}
