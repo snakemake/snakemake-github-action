@@ -24,6 +24,10 @@ Preliminary commands to run before the workflow execution.
 
 Whether to run Snakemake or to generate a container image specification (in the form of a Dockerfile) that contains all required environments. Can be either `run` or `containerize`. Default `run`.
 
+### `show-disk-usage-on-error`
+
+Whether free disk space will be returned if Snakemake is failing . Can be either `true` or `false`.
+
 ## Example usage
 
 ```yaml
