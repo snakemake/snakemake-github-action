@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.25.0](https://www.github.com/snakemake/snakemake-github-action/compare/v1.24.0...v1.25.0) (2023-08-07)
+
+
+### Features
+
+* option for printing disk space on error ([#31](https://www.github.com/snakemake/snakemake-github-action/issues/31)) ([f4772d6](https://www.github.com/snakemake/snakemake-github-action/commit/f4772d66a211af0d1542b0d756189e1d025ae984))
+
 ## [1.24.0](https://www.github.com/snakemake/snakemake-github-action/compare/v1.23.0...v1.24.0) (2021-11-23)
 
 
