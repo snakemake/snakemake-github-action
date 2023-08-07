@@ -18,6 +18,9 @@ elif [ "$5" = 'run' ] ; then
     # return disk space usage on failing
     if [[ "$?" -ne 0 && "$6" = true ]] ; then
         df -h
+        echo "du home\n"
+        du -h -d3 /github/home
+        echo "du working directory\n"
         du -h -d3 $1 && exit 1
     fi
 else
