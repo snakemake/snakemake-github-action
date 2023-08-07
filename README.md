@@ -26,7 +26,7 @@ Whether to run Snakemake or to generate a container image specification (in the 
 
 ### `show-disk-usage-on-error`
 
-Whether free disk space will be returned if Snakemake is failing . Can be either `true` or `false`.
+Whether used disk space shall be printed if Snakemake fails. Can be either `true` or `false` (default: `false`).
 
 ## Example usage
 
@@ -45,6 +45,8 @@ Whether free disk space will be returned if Snakemake is failing . Can be either
     snakefile: 'workflow/Snakefile'
     args: '--cores 1 --use-conda --conda-cleanup-pkgs cache'
     stagein: '' # additional preliminary commands to run (can be multiline)
+    show-disk-usage-on-error: true
+
 
 - name: Create container file
   uses: snakemake/snakemake-github-action@v1
