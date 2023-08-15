@@ -28,6 +28,7 @@ Whether to run Snakemake or to generate a container image specification (in the 
 
 Whether used disk space shall be printed if Snakemake fails. Can be either `true` or `false` (default: `false`).
 
+
 ## Example usage
 
 ```yaml
