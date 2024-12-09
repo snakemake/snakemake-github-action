@@ -51,6 +51,7 @@ runs:
 
     - name: Install Apptainer
       if: ${{ inputs.install-apptainer == 'true' }}
+      shell: bash -el {0}
       run: |
         sudo apt-get update
         sudo apt-get install -y apptainer
