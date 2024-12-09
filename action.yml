@@ -55,6 +55,9 @@ runs:
         miniforge-version: latest
         environment-file: environment.yaml
         activate-environment: snakemake
+    - name: Display snakemake version
+      shell: bash -el {0}
+      run: snakemake --version
     - name: Run snakemake
       if: ${{ inputs.task == 'run' }}
       shell: bash -el {0}
