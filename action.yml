@@ -33,6 +33,7 @@ inputs:
   snakemake-version:
     description: Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
     required: false
+    default: '*'
 
 runs:
   using: 'composite'
@@ -45,6 +46,7 @@ runs:
         exit 1
     - shell: bash -el {0}
       run: sed 's/{{ snakemake_version }}/${{ inputs.snakemake-version }}/g' environment.yaml.template > environment.yaml
+
     - name: Setup conda
       uses: conda-incubator/setup-miniconda@v3
       with:
