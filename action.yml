@@ -31,9 +31,8 @@ inputs:
     required: false
     default: false
   snakemake-version:
-   description: Which snakemake version to use
-   required: false
-   default: 8.25.5
+    description: Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
+    required: false
 
 runs:
   using: 'composite'
