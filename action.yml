@@ -27,17 +27,44 @@ inputs:
     required: false
     default: 'run'
   show-disk-usage-on-error:
-    descriptions: Whether to return the used disk space on failing.
+    description: Whether to return the used disk space on failing.
     required: false
     default: false
+  snakemake-version:
+   description: Which snakemake version to use
+   required: false
+   default: 8.25.5
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.directory }}
-    - ${{ inputs.snakefile }}
-    - ${{ inputs.args }}
-    - ${{ inputs.stagein }}
-    - ${{ inputs.task }}
-    - ${{ inputs.show-disk-usage-on-error }}
+  using: 'composite'
+  steps:
+    - shell: bash -el {0}
+      run: sed 's/{{ snakemake_version }}/${{ inputs.snakemake-version }}/g' environment.yaml.template > environment.yaml
+    - name: Setup conda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        channels: conda-forge,bioconda
+        channel-priority: strict
+        miniforge-version: latest
+        environment-file: environment.yaml
+    - name: Run snakemake
+      if: ${{ inputs.task == 'run' }}
+      shell: bash -el {0}
+      run: |
+        snakemake --directory ${{ inputs.directory }} --snakefile ${{ inputs.snakefile }} --show-failed-logs ${{ inputs.args }}
+        if [[ "$?" -ne 0 ]]; then
+          if [[ "$6" = true ]]; then
+              # return disk usage and space on failing
+              df -h
+              printf "disk usage working directory"
+              du -h -d3 $1
+          fi
+          exit 1
+      fi
+    - name: Containerize snakemake
+      if: ${{ inputs.task == 'containerize' }}
+      shell: bash -el {0}
+      run: snakemake --directory ${{ inputs.directory }} --snakefile ${{ inputs.snakefile }} --show-failed-logs ${{ inputs.args }} --containerize > Dockerfile
+    - if: ${{ ! (inputs.task == 'containerize' || inputs.task == 'run' )}}
+      run: echo "Invalid value for 'task': '${{ inputs.task }}'. Options: 'containerize', 'run'." && exit 1
+
