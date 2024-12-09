@@ -53,6 +53,7 @@ runs:
         channel-priority: strict
         miniforge-version: latest
         environment-file: environment.yaml
+        activate-environment: snakemake
     - name: Run snakemake
       if: ${{ inputs.task == 'run' }}
       shell: bash -el {0}
