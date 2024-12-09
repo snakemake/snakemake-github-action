@@ -60,7 +60,7 @@ runs:
               du -h -d3 $1
           fi
           exit 1
-      fi
+        fi
     - name: Containerize snakemake
       if: ${{ inputs.task == 'containerize' }}
       shell: bash -el {0}
