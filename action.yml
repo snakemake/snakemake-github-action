@@ -59,7 +59,7 @@ runs:
       run: |
         snakemake --directory ${{ inputs.directory }} --snakefile ${{ inputs.snakefile }} --show-failed-logs ${{ inputs.args }}
         if [[ "$?" -ne 0 ]]; then
-          if [[ "$6" = true ]]; then
+          if [[ ${{ inputs.show-disk-usage-on-error }} = true ]]; then
               # return disk usage and space on failing
               df -h
               printf "disk usage working directory"
