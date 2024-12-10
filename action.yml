@@ -56,9 +56,17 @@ runs:
         sudo apt-get update
         sudo apt-get install -y apptainer
 
-    - name: Prepare environment.yaml
+    - name: Prepare .snakemake.environment.yaml
       shell: bash -el {0}
-      run: sed 's/{{ snakemake_version }}/${{ inputs.snakemake-version }}/g' environment.yaml.template > environment.yaml
+      run: |8
+        cat <<EOF > .snakemake.environment.yaml
+        channels:
+          - conda-forge
+          - bioconda
+          - nodefaults
+        dependencies:
+          - snakemake ==${{ inputs.snakemake-version }}
+        EOF
 
     - name: Setup conda
       uses: conda-incubator/setup-miniconda@v3
@@ -66,7 +74,7 @@ runs:
         channels: conda-forge,bioconda
         channel-priority: strict
         miniforge-version: latest
-        environment-file: environment.yaml
+        environment-file: .snakemake.environment.yaml
         activate-environment: snakemake
 
     - name: Display snakemake version
