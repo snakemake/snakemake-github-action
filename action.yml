@@ -53,9 +53,12 @@ runs:
       if: ${{ inputs.install-apptainer == 'true' }}
       shell: bash -el {0}
       run: |
+        if ! command -v apt-get &> /dev/null; then
+          echo "Error: This action currently supports Apptainer installation only on Ubuntu runners"
+          exit 1
+        fi
         sudo apt-get update
         sudo apt-get install -y apptainer
-
     - name: Prepare .snakemake.environment.yaml
       shell: bash -el {0}
       run: |
