@@ -58,7 +58,7 @@ runs:
 
     - name: Prepare .snakemake.environment.yaml
       shell: bash -el {0}
-      run: |8
+      run: |
         cat <<EOF > .snakemake.environment.yaml
         channels:
           - conda-forge
