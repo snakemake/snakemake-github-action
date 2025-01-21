@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://www.github.com/snakemake/snakemake-github-action/compare/v1.25.1...v2.0.0) (2025-01-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* Use composite action with conda instead of docker action (#39)
+
+### Features
+
+* Use composite action with conda instead of docker action ([#39](https://www.github.com/snakemake/snakemake-github-action/issues/39)) ([e8018d7](https://www.github.com/snakemake/snakemake-github-action/commit/e8018d7b51176b179010fed2e4902c0f920d1fe5))
+
 ### [1.25.1](https://www.github.com/snakemake/snakemake-github-action/compare/v1.25.0...v1.25.1) (2023-08-07)
 
 
