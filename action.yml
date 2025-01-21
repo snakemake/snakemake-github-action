@@ -27,17 +27,80 @@ inputs:
     required: false
     default: 'run'
   show-disk-usage-on-error:
-    descriptions: Whether to return the used disk space on failing.
+    description: Whether to return the used disk space on failing.
+    required: false
+    default: false
+  snakemake-version:
+    description: Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
+    required: false
+    default: '*'
+  install-apptainer:
+    description: Install Apptainer (true/false)
     required: false
     default: false
 
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.directory }}
-    - ${{ inputs.snakefile }}
-    - ${{ inputs.args }}
-    - ${{ inputs.stagein }}
-    - ${{ inputs.task }}
-    - ${{ inputs.show-disk-usage-on-error }}
+  using: 'composite'
+  steps:
+    - name: Validate inputs
+      if: ${{ ! (inputs.task == 'containerize' || inputs.task == 'run' )}}
+      shell: bash -el {0}
+      run: |
+        echo 'Invalid value for "task": "${{ inputs.task }}". Options: "containerize", "run".'
+        exit 1
+
+    - name: Install Apptainer
+      if: ${{ inputs.install-apptainer == 'true' }}
+      shell: bash -el {0}
+      run: |
+        if ! command -v apt-get &> /dev/null; then
+          echo "Error: This action currently supports Apptainer installation only on Ubuntu runners"
+          exit 1
+        fi
+        sudo apt-get update
+        sudo apt-get install -y apptainer
+    - name: Prepare .snakemake.environment.yaml
+      shell: bash -el {0}
+      run: |
+        cat <<EOF > .snakemake.environment.yaml
+        channels:
+          - conda-forge
+          - bioconda
+          - nodefaults
+        dependencies:
+          - snakemake ==${{ inputs.snakemake-version }}
+        EOF
+
+    - name: Setup conda
+      uses: conda-incubator/setup-miniconda@v3
+      with:
+        channels: conda-forge,bioconda
+        channel-priority: strict
+        miniforge-version: latest
+        environment-file: .snakemake.environment.yaml
+        activate-environment: snakemake
+
+    - name: Display snakemake version
+      shell: bash -el {0}
+      run: snakemake --version
+
+    - name: Run snakemake
+      if: ${{ inputs.task == 'run' }}
+      shell: bash -el {0}
+      run: |
+        snakemake --directory ${{ inputs.directory }} --snakefile ${{ inputs.snakefile }} --show-failed-logs ${{ inputs.args }}
+        if [[ "$?" -ne 0 ]]; then
+          if [[ ${{ inputs.show-disk-usage-on-error }} = true ]]; then
+              # return disk usage and space on failing
+              df -h
+              printf "disk usage working directory"
+              du -h -d3 ${{ inputs.directory }}
+          fi
+          exit 1
+        fi
+
+    - name: Containerize snakemake
+      if: ${{ inputs.task == 'containerize' }}
+      shell: bash -el {0}
+      run: snakemake --directory ${{ inputs.directory }} --snakefile ${{ inputs.snakefile }} --show-failed-logs ${{ inputs.args }} --containerize > Dockerfile
+
