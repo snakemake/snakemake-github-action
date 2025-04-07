@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.1](https://www.github.com/snakemake/snakemake-github-action/compare/v2.0.0...v2.0.1) (2025-04-07)
+
+
+### Bug Fixes
+
+* bring back execution of `stagein:` ([#41](https://www.github.com/snakemake/snakemake-github-action/issues/41)) ([0964516](https://www.github.com/snakemake/snakemake-github-action/commit/0964516b6860bfb28f3b76b5e6b61dc50a57fab5))
+
 ## [2.0.0](https://www.github.com/snakemake/snakemake-github-action/compare/v1.25.1...v2.0.0) (2025-01-21)
 
 
