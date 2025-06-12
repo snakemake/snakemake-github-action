@@ -28,7 +28,7 @@ Whether to run Snakemake or to generate a container image specification (in the 
 
 Whether used disk space shall be printed if Snakemake fails. Can be either `true` or `false` (default: `false`).
 
-### `snakemake version`
+### `snakemake-version`
 
 Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
 
