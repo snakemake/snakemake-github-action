@@ -38,6 +38,10 @@ inputs:
     description: Install Apptainer (true/false)
     required: false
     default: false
+  environment-file:
+    description: Path to a custom Conda environment file containing snakemake (e.g., 'etc/custom-environment.yml'). If not specified, a default environment with snakemake is generated.
+    required: false
+    default: ''
 
 runs:
   using: 'composite'
@@ -59,7 +63,9 @@ runs:
         fi
         sudo apt-get update
         sudo apt-get install -y apptainer
+
     - name: Prepare .snakemake.environment.yaml
+      if: ${{ inputs.environment-file == '' }}
       shell: bash -el {0}
       run: |
         cat <<EOF > .snakemake.environment.yaml
@@ -71,13 +77,24 @@ runs:
           - snakemake ==${{ inputs.snakemake-version }}
         EOF
 
+    - name: Validate custom environment file
+      if: ${{ inputs.environment-file != '' }}
+      shell: bash -el {0}
+      run: |
+        if [[ -f "${{ inputs.environment-file }}" ]]; then
+          echo "Using custom environment file: ${{ inputs.environment-file }}"
+        else
+          echo "Error: Custom environment file '${{ inputs.environment-file }}' not found"
+          exit 1
+        fi
+
     - name: Setup conda
       uses: conda-incubator/setup-miniconda@v3
       with:
         channels: conda-forge,bioconda
         channel-priority: strict
         miniforge-version: latest
-        environment-file: .snakemake.environment.yaml
+        environment-file: ${{ inputs.environment-file != '' && inputs.environment-file || '.snakemake.environment.yaml' }}
         activate-environment: snakemake
 
     - name: Display snakemake version

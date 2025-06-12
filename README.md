@@ -28,6 +28,18 @@ Whether to run Snakemake or to generate a container image specification (in the 
 
 Whether used disk space shall be printed if Snakemake fails. Can be either `true` or `false` (default: `false`).
 
+### `snakemake version`
+
+Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
+
+### `install-apptainer`
+
+Install Apptainer (true/false)
+
+### `environment-file`
+
+Path to a custom Conda environment file containing snakemake (e.g., 'etc/custom-environment.yml'). If not specified, a default environment with snakemake is generated.
+
 ## Example usage
 
 ```yaml
@@ -46,6 +58,7 @@ Whether used disk space shall be printed if Snakemake fails. Can be either `true
     args: '--cores 1 --sdm conda --conda-cleanup-pkgs cache'
     stagein: '' # additional preliminary commands to run (can be multiline)
     show-disk-usage-on-error: true
+    environment-file: 'my-environment.yaml'
 
 
 - name: Create container file
