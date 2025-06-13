@@ -1,0 +1,6 @@
+custom_channels:
+    conda-forge: https://prefix.dev/conda-forge
+    bioconda: https://prefix.dev/bioconda
+always_yes: true
+show_channel_urls: true
+
