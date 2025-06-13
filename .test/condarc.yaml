@@ -3,4 +3,4 @@ custom_channels:
     bioconda: https://prefix.dev/bioconda
 always_yes: true
 show_channel_urls: true
-conda-remove-defaults: true
+

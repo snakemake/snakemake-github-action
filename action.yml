@@ -70,7 +70,6 @@ runs:
         channels:
           - conda-forge
           - bioconda
-          - nodefaults
         dependencies:
           - snakemake ==${{ inputs.snakemake-version }}
         EOF
@@ -93,6 +92,7 @@ runs:
         channel-priority: strict
         miniforge-version: latest
         environment-file: .snakemake.environment.yaml
+        conda-remove-defaults: "true"
         condarc-file: ${{ inputs.condarc-file }}
         activate-environment: snakemake
 
