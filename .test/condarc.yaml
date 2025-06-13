@@ -1,6 +1,5 @@
 channels:
     - https://prefix.dev/conda-forge
     - https://prefix.dev/bioconda
-    - nodefaults
-dependencies:
-    - snakemake ==9.5.1
+always_yes: true
+show_channel_urls: true

@@ -22,12 +22,12 @@ jobs:
         snakefile: .test/Snakefile
         args: "--cores 1"
 
-    - name: Test environment-file
+    - name: Test condarc-file
       uses: ./
       with:
         directory: .test
         snakefile: .test/Snakefile
-        environment-file: .test/environment.yaml
+        condarc-file: .test/condarc.yaml
         args: "--cores 1"
 
     - name: Test containerize

@@ -38,9 +38,8 @@ inputs:
     description: Install Apptainer (true/false)
     required: false
     default: false
-  environment-file:
-    description: Path to a custom Conda environment file containing snakemake (e.g., 'etc/custom-environment.yml'). If not specified, a default environment with snakemake is generated.
-    required: false
+  condarc-file:
+    description: Path to a custom condarc file for workflow action environment (e.g. '.condarc').
     default: ''
 
 runs:
@@ -65,7 +64,6 @@ runs:
         sudo apt-get install -y apptainer
 
     - name: Prepare .snakemake.environment.yaml
-      if: ${{ inputs.environment-file == '' }}
       shell: bash -el {0}
       run: |
         cat <<EOF > .snakemake.environment.yaml
@@ -76,15 +74,15 @@ runs:
         dependencies:
           - snakemake ==${{ inputs.snakemake-version }}
         EOF
-
-    - name: Validate custom environment file
-      if: ${{ inputs.environment-file != '' }}
+    
+    - name: Validate custom condarc file
+      if: ${{ inputs.condarc-file != '' }}
       shell: bash -el {0}
       run: |
-        if [[ -f "${{ inputs.environment-file }}" ]]; then
-          echo "Using custom environment file: ${{ inputs.environment-file }}"
+        if [[ -f "${{ inputs.condarc-file }}" ]]; then
+          echo "Using custom condarc file: ${{ inputs.condarc-file }}"
         else
-          echo "Error: Custom environment file '${{ inputs.environment-file }}' not found"
+          echo "Error: Custom condarc file '${{ inputs.condarc-file }}' not found"
           exit 1
         fi
 
@@ -94,7 +92,7 @@ runs:
         channels: conda-forge,bioconda
         channel-priority: strict
         miniforge-version: latest
-        environment-file: ${{ inputs.environment-file || '.snakemake.environment.yaml' }}
+        condarc-file: ${{ inputs.condarc-file }}
         activate-environment: snakemake
 
     - name: Display snakemake version

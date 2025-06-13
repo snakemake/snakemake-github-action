@@ -36,9 +36,9 @@ Snakemake version to use. If not specified, uses latest version. Pin a specific 
 
 Install Apptainer (true/false)
 
-### `environment-file`
+### `condarc-file`
 
-Path to a custom Conda environment file containing snakemake (e.g., 'etc/custom-environment.yml'). If not specified, a default environment with snakemake is generated.
+Path to a custom condarc file (e.g., 'etc/condarc.yaml')
 
 ## Example usage
 
@@ -58,7 +58,7 @@ Path to a custom Conda environment file containing snakemake (e.g., 'etc/custom-
     args: '--cores 1 --sdm conda --conda-cleanup-pkgs cache'
     stagein: '' # additional preliminary commands to run (can be multiline)
     show-disk-usage-on-error: true
-    environment-file: 'my-environment.yaml'
+    condarc-file: 'condarc.yaml'
 
 
 - name: Create container file
