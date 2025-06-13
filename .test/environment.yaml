@@ -3,4 +3,4 @@ channels:
     - https://prefix.dev/bioconda
     - nodefaults
 dependencies:
-    - snakemake ==5.9.0
+    - snakemake ==9.5.1
