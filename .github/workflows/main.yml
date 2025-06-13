@@ -8,7 +8,7 @@ on:
     branches_ignore: []
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
     
@@ -22,14 +22,6 @@ jobs:
         snakefile: .test/Snakefile
         args: "--cores 1"
 
-    - name: Test condarc-file
-      uses: ./
-      with:
-        directory: .test
-        snakefile: .test/Snakefile
-        condarc-file: .test/condarc.yaml
-        args: "--cores 1"
-
     - name: Test containerize
       uses: ./
       with:
@@ -41,3 +33,16 @@ jobs:
     - name: Show Dockerfile
       run: |
         cat Dockerfile
+  
+  test-condarc:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Test condarc-file
+      uses: ./
+      with:
+        directory: .test
+        snakefile: .test/Snakefile
+        condarc-file: .test/condarc.yaml
+        args: "--cores 1"
