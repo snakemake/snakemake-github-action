@@ -22,6 +22,14 @@ jobs:
         snakefile: .test/Snakefile
         args: "--cores 1"
 
+    - name: Test environment-file
+      uses: ./
+      with:
+        directory: .test
+        snakefile: .test/Snakefile
+        environment-file: .test/environment.yaml
+        args: "--cores 1"
+
     - name: Test containerize
       uses: ./
       with:

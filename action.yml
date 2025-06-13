@@ -94,7 +94,7 @@ runs:
         channels: conda-forge,bioconda
         channel-priority: strict
         miniforge-version: latest
-        environment-file: ${{ inputs.environment-file != '' && inputs.environment-file || '.snakemake.environment.yaml' }}
+        environment-file: ${{ inputs.environment-file || '.snakemake.environment.yaml' }}
         activate-environment: snakemake
 
     - name: Display snakemake version
