@@ -45,4 +45,5 @@ jobs:
         directory: .test
         snakefile: .test/Snakefile
         condarc-file: .test/condarc.yaml
+        stagein: "conda list"
         args: "--cores 1"
