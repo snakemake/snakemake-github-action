@@ -92,6 +92,7 @@ runs:
         channels: conda-forge,bioconda
         channel-priority: strict
         miniforge-version: latest
+        environment-file: .snakemake.environment.yaml
         condarc-file: ${{ inputs.condarc-file }}
         activate-environment: snakemake
 
