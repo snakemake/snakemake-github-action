@@ -38,6 +38,9 @@ inputs:
     description: Install Apptainer (true/false)
     required: false
     default: false
+  condarc-file:
+    description: Path to a custom condarc file for workflow action environment (e.g. '.condarc').
+    default: ''
 
 runs:
   using: 'composite'
@@ -59,6 +62,7 @@ runs:
         fi
         sudo apt-get update
         sudo apt-get install -y apptainer
+
     - name: Prepare .snakemake.environment.yaml
       shell: bash -el {0}
       run: |
@@ -66,10 +70,20 @@ runs:
         channels:
           - conda-forge
           - bioconda
-          - nodefaults
         dependencies:
           - snakemake ==${{ inputs.snakemake-version }}
         EOF
+    
+    - name: Validate custom condarc file
+      if: ${{ inputs.condarc-file != '' }}
+      shell: bash -el {0}
+      run: |
+        if [[ -f "${{ inputs.condarc-file }}" ]]; then
+          echo "Using custom condarc file: ${{ inputs.condarc-file }}"
+        else
+          echo "Error: Custom condarc file '${{ inputs.condarc-file }}' not found"
+          exit 1
+        fi
 
     - name: Setup conda
       uses: conda-incubator/setup-miniconda@v3
@@ -78,6 +92,8 @@ runs:
         channel-priority: strict
         miniforge-version: latest
         environment-file: .snakemake.environment.yaml
+        conda-remove-defaults: "true"
+        condarc-file: ${{ inputs.condarc-file }}
         activate-environment: snakemake
 
     - name: Display snakemake version

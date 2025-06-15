@@ -28,6 +28,18 @@ Whether to run Snakemake or to generate a container image specification (in the 
 
 Whether used disk space shall be printed if Snakemake fails. Can be either `true` or `false` (default: `false`).
 
+### `snakemake-version`
+
+Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
+
+### `install-apptainer`
+
+Install Apptainer (true/false)
+
+### `condarc-file`
+
+Path to a custom condarc file (e.g., 'etc/condarc.yaml')
+
 ## Example usage
 
 ```yaml
@@ -46,6 +58,7 @@ Whether used disk space shall be printed if Snakemake fails. Can be either `true
     args: '--cores 1 --sdm conda --conda-cleanup-pkgs cache'
     stagein: '' # additional preliminary commands to run (can be multiline)
     show-disk-usage-on-error: true
+    condarc-file: 'condarc.yaml'
 
 
 - name: Create container file

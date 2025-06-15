@@ -8,7 +8,7 @@ on:
     branches_ignore: []
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
     
@@ -33,3 +33,17 @@ jobs:
     - name: Show Dockerfile
       run: |
         cat Dockerfile
+  
+  test-condarc:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Test condarc-file
+      uses: ./
+      with:
+        directory: .test
+        snakefile: .test/Snakefile
+        condarc-file: .test/condarc.yaml
+        stagein: "conda list"
+        args: "--cores 1"
