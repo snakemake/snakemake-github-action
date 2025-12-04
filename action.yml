@@ -73,8 +73,18 @@ runs:
           - snakemake ==${{ inputs.snakemake-version }}
         EOF
 
+    - name: Check if miniconda is already installed
+      id: check-miniconda
+      shell: bash -el {0}
+      run: |
+        if [ -d "/home/runner/miniconda3" ]; then
+          echo "installed=true" >> $GITHUB_OUTPUT
+        else
+          echo "installed=false" >> $GITHUB_OUTPUT
+        fi
+
     - name: Setup conda
-      if: ${{ !hashFiles('/home/runner/miniconda3/condabin/conda') }}
+      if: steps.check-miniconda.outputs.installed == 'false'
       uses: conda-incubator/setup-miniconda@v3
       with:
         channels: conda-forge,bioconda
