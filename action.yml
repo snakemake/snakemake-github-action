@@ -74,7 +74,7 @@ runs:
         EOF
 
     - name: Setup conda
-      if: ${{ !hashFiles('/home/runner/miniconda3/.condarc') }}
+      if: ${{ !hashFiles('/home/runner/miniconda3/condabin/conda') }}
       uses: conda-incubator/setup-miniconda@v3
       with:
         channels: conda-forge,bioconda
