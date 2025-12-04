@@ -74,6 +74,7 @@ runs:
         EOF
 
     - name: Setup conda
+      if: ${{ !hashFiles('/home/runner/miniconda3/.condarc') }}
       uses: conda-incubator/setup-miniconda@v3
       with:
         channels: conda-forge,bioconda
@@ -81,6 +82,7 @@ runs:
         miniforge-version: latest
         environment-file: .snakemake.environment.yaml
         activate-environment: snakemake
+        installation-dir: /home/runner/miniconda3
 
     - name: Display snakemake version
       shell: bash -el {0}
