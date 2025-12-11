@@ -78,7 +78,7 @@ runs:
       with:
         channels: conda-forge,bioconda
         channel-priority: strict
-        miniforge-version: 25.9.1-0 # TODO: set back to "latest" once this issue in the conda-libmamba-solver is patched and/or released: https://github.com/conda/conda-libmamba-solver/issues/798
+        miniforge-version: 25.9.1-0 # TODO: set back to "latest" once this issue in the conda installer (template) is fixed and released: https://github.com/conda/constructor/pull/1135
         environment-file: .snakemake.environment.yaml
         activate-environment: snakemake
 
