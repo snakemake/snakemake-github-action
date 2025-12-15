@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.0.2](https://github.com/snakemake/snakemake-github-action/compare/v2.0.1...v2.0.2) (2025-12-15)
+
+
+### Bug Fixes
+
+* add apptainer source, yml formatting ([#45](https://github.com/snakemake/snakemake-github-action/issues/45)) ([73be4c1](https://github.com/snakemake/snakemake-github-action/commit/73be4c1951827687d8c1c2eb4f1c29f278618422))
+* defunct release-please action ([#46](https://github.com/snakemake/snakemake-github-action/issues/46)) ([c5f3459](https://github.com/snakemake/snakemake-github-action/commit/c5f3459a28884db12c0ccef91f290d4373dbd7c9))
+* pin miniforge to working version `25.9.1` ([#49](https://github.com/snakemake/snakemake-github-action/issues/49)) ([22d9209](https://github.com/snakemake/snakemake-github-action/commit/22d9209fb21106d8cd39f953c5b025a6f6a3ec52))
+
 ### [2.0.1](https://www.github.com/snakemake/snakemake-github-action/compare/v2.0.0...v2.0.1) (2025-04-07)
 
 
