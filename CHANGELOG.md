@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](https://github.com/snakemake/snakemake-github-action/compare/v2.0.2...v2.0.3) (2025-12-15)
+
+
+### Bug Fixes
+
+* remove unused remote setup that was using GitHub token in version tag update ([#51](https://github.com/snakemake/snakemake-github-action/issues/51)) ([b46b0bb](https://github.com/snakemake/snakemake-github-action/commit/b46b0bb3c7c5801540a247cb6bee1a8d895cd743))
+
 ## [2.0.2](https://github.com/snakemake/snakemake-github-action/compare/v2.0.1...v2.0.2) (2025-12-15)
 
 
