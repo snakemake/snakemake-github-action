@@ -32,25 +32,25 @@ Whether used disk space shall be printed if Snakemake fails. Can be either `true
 
 ```yaml
 - name: Linting
-  uses: snakemake/snakemake-github-action@v1
+  uses: snakemake/snakemake-github-action@v2
   with:
-    directory: '.test'
-    snakefile: 'workflow/Snakefile'
-    args: '--lint'
+    directory: ".test"
+    snakefile: "workflow/Snakefile"
+    args: "--lint"
 
 - name: Testing
   uses: snakemake/snakemake-github-action@v2
   with:
-    directory: '.test'
-    snakefile: 'workflow/Snakefile'
-    args: '--cores 1 --sdm conda --conda-cleanup-pkgs cache'
-    stagein: '' # additional preliminary commands to run (can be multiline)
+    directory: ".test"
+    snakefile: "workflow/Snakefile"
+    args: "--cores 1 --sdm conda --conda-cleanup-pkgs cache"
+    stagein: "" # additional preliminary commands to run (can be multiline)
     show-disk-usage-on-error: true
-
 
 - name: Create container file
   uses: snakemake/snakemake-github-action@v2
   with:
-    snakefile: 'workflow/Snakefile'
-    task: 'containerize'
+    directory: ".test"
+    snakefile: "workflow/Snakefile"
+    task: "containerize"
 ```
