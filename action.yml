@@ -29,15 +29,22 @@ inputs:
   show-disk-usage-on-error:
     description: Whether to return the used disk space on failing.
     required: false
-    default: false
+    default: "false"
   snakemake-version:
-    description: Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
+    description: |
+      Snakemake version to use. If not specified, uses latest version. Pin a specific version (e.g., '8.25.5') for reproducibility.
     required: false
     default: "*"
+  snakemake-branch:
+    description: |
+      Optional Snakemake git branch to install from https://github.com/snakemake/snakemake.
+      If set, this takes precedence over snakemake-version and Snakemake is installed via pip.
+    required: false
+    default: ""
   install-apptainer:
     description: Install Apptainer (true/false)
     required: false
-    default: false
+    default: "false"
 
 runs:
   using: "composite"
@@ -70,17 +77,33 @@ runs:
           - bioconda
           - nodefaults
         dependencies:
+        EOF
+
+        if [[ -n "${{ inputs.snakemake-branch }}" ]]; then
+          cat <<EOF >> .snakemake.environment.yaml
+          - python
+          - pip
+        EOF
+        else
+          cat <<EOF >> .snakemake.environment.yaml
           - snakemake ==${{ inputs.snakemake-version }}
         EOF
+        fi
 
     - name: Setup conda
       uses: conda-incubator/setup-miniconda@v3
       with:
         channels: conda-forge,bioconda
         channel-priority: strict
-        miniforge-version: 25.9.1-0 # TODO: set back to "latest" once this issue in the conda installer (template) is fixed and released: https://github.com/conda/constructor/pull/1135
+        miniforge-version: latest
         environment-file: .snakemake.environment.yaml
         activate-environment: snakemake
+
+    - name: Install snakemake from git branch
+      if: ${{ inputs.snakemake-branch != '' }}
+      shell: bash -el {0}
+      run: |
+        python -m pip install "git+https://github.com/snakemake/snakemake@${{ inputs.snakemake-branch }}"
 
     - name: Display snakemake version
       shell: bash -el {0}
