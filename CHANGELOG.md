@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/snakemake/snakemake-github-action/compare/v2.1.0...v2.1.1) (2026-03-26)
+
+
+### Bug Fixes
+
+* install snakemake conda deps in case of snakemake-branch ([5df718d](https://github.com/snakemake/snakemake-github-action/commit/5df718db623c3101eb361621e6697623246069d6))
+
 ## [2.1.0](https://github.com/snakemake/snakemake-github-action/compare/v2.0.3...v2.1.0) (2026-03-26)
 
 
