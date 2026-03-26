@@ -103,6 +103,7 @@ runs:
       if: ${{ inputs.snakemake-branch != '' }}
       shell: bash -el {0}
       run: |
+        conda install --only-deps snakemake==${{ inputs.snakemake-version }}
         python -m pip install "git+https://github.com/snakemake/snakemake@${{ inputs.snakemake-branch }}"
 
     - name: Display snakemake version
