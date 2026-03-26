@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/snakemake/snakemake-github-action/compare/v2.0.3...v2.1.0) (2026-03-26)
+
+
+### Features
+
+* allow to use custom snakemake branch instead of conda version ([#53](https://github.com/snakemake/snakemake-github-action/issues/53)) ([6c5b9f2](https://github.com/snakemake/snakemake-github-action/commit/6c5b9f23c691f87e031b4ec397de4185c930e239))
+
 ## [2.0.3](https://github.com/snakemake/snakemake-github-action/compare/v2.0.2...v2.0.3) (2025-12-15)
 
 
