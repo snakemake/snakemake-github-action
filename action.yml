@@ -81,7 +81,7 @@ runs:
 
         if [[ -n "${{ inputs.snakemake-branch }}" ]]; then
           cat <<EOF >> .snakemake.environment.yaml
-          - python
+          - python ==3.12
           - pip
         EOF
         else
