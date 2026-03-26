@@ -28,6 +28,14 @@ Whether to run Snakemake or to generate a container image specification (in the 
 
 Whether used disk space shall be printed if Snakemake fails. Can be either `true` or `false` (default: `false`).
 
+### `snakemake-version`
+
+Snakemake version to install from conda. Default `*` (latest available version from the configured channels).
+
+### `snakemake-branch`
+
+Optional Snakemake git branch to install from `https://github.com/snakemake/snakemake`. If set, this takes precedence over `snakemake-version` and Snakemake is installed from source via pip.
+
 ## Example usage
 
 ```yaml
@@ -46,6 +54,14 @@ Whether used disk space shall be printed if Snakemake fails. Can be either `true
     args: "--cores 1 --sdm conda --conda-cleanup-pkgs cache"
     stagein: "" # additional preliminary commands to run (can be multiline)
     show-disk-usage-on-error: true
+
+- name: Testing with custom Snakemake branch
+  uses: snakemake/snakemake-github-action@v2
+  with:
+    directory: ".test"
+    snakefile: "workflow/Snakefile"
+    args: "--cores 1 --sdm conda --conda-cleanup-pkgs cache"
+    snakemake-branch: main
 
 - name: Create container file
   uses: snakemake/snakemake-github-action@v2
