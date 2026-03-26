@@ -21,6 +21,14 @@ jobs:
           snakefile: .test/Snakefile
           args: "--cores 1"
 
+      - name: Test run branch
+        uses: ./
+        with:
+          directory: .test
+          snakefile: .test/Snakefile
+          args: "--cores 1"
+          snakemake-branch: "main"
+
       - name: Test containerize
         uses: ./
         with:
