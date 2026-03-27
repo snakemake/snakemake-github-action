@@ -77,17 +77,7 @@ runs:
           - bioconda
           - nodefaults
         dependencies:
-        EOF
-
-        if [[ -n "${{ inputs.snakemake-branch }}" ]]; then
-          cat <<EOF >> .snakemake.environment.yaml
-          - python ==3.12
-          - pip
-        EOF
-        else
-          cat <<EOF >> .snakemake.environment.yaml
           - snakemake ==${{ inputs.snakemake-version }}
-        EOF
         fi
 
     - name: Setup conda
@@ -103,8 +93,7 @@ runs:
       if: ${{ inputs.snakemake-branch != '' }}
       shell: bash -el {0}
       run: |
-        conda install --only-deps snakemake==${{ inputs.snakemake-version }}
-        python -m pip install "git+https://github.com/snakemake/snakemake@${{ inputs.snakemake-branch }}"
+        pip install "git+https://github.com/snakemake/snakemake@${{ inputs.snakemake-branch }}"
 
     - name: Display snakemake version
       shell: bash -el {0}
