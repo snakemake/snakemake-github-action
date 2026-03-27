@@ -78,7 +78,6 @@ runs:
           - nodefaults
         dependencies:
           - snakemake ==${{ inputs.snakemake-version }}
-        fi
 
     - name: Setup conda
       uses: conda-incubator/setup-miniconda@v3
