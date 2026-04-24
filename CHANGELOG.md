@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.1.2](https://github.com/snakemake/snakemake-github-action/compare/v2.1.1...v2.1.2) (2026-04-24)
+
+
+### Bug Fixes
+
+* containerize arguments ([#58](https://github.com/snakemake/snakemake-github-action/issues/58)) ([2e9153a](https://github.com/snakemake/snakemake-github-action/commit/2e9153a1937041c757473c3b97a0f4290b23ddda))
+* keep conda env and install branch snakemake via pip on top ([cdae5b6](https://github.com/snakemake/snakemake-github-action/commit/cdae5b6dade94cf4847592087e3b231a7ab479e8))
+* pin python version to 3.12 ([1ebc8f9](https://github.com/snakemake/snakemake-github-action/commit/1ebc8f9e4bd0e0a1425a6e58e964e01f8bec81e5))
+
 ## [2.1.1](https://github.com/snakemake/snakemake-github-action/compare/v2.1.0...v2.1.1) (2026-03-26)
 
 
