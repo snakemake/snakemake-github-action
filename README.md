@@ -22,7 +22,7 @@ Preliminary commands to run before the workflow execution.
 
 ### `task`
 
-Whether to run Snakemake or to generate a container image specification (in the form of a Dockerfile) that contains all required environments. Can be either `run` or `containerize`. Default `run`.
+Whether to run Snakemake or to generate a container image specification (`Dockerfile`, `apptainer.def`) that contains all required environments. Can be either `run` or `containerize`. Default `run`.
 
 ### `show-disk-usage-on-error`
 
@@ -42,7 +42,7 @@ Whether to install Apptainer (true/false). Default `false`.
 
 ### `containerize-args`
 
-Additional arguments for `containerize`, can be one of 'dockerfile', 'apptainer' or '' (defaults to dockerfile)
+Additional arguments for `containerize`, can be one of 'dockerfile', 'apptainer' or '' (defaults to dockerfile).
 
 ## Example usage
 
