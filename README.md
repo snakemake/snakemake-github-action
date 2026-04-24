@@ -36,6 +36,14 @@ Snakemake version to install from conda. Default `*` (latest available version f
 
 Optional Snakemake git branch to install from `https://github.com/snakemake/snakemake`. If set, this takes precedence over `snakemake-version` and Snakemake is installed from source via pip.
 
+### `install-apptainer`
+
+Whether to install Apptainer (true/false). Default `false`.
+
+### `containerize-args`
+
+Additional arguments for `containerize`, can be one of 'dockerfile', 'apptainer' or '' (defaults to dockerfile)
+
 ## Example usage
 
 ```yaml
@@ -69,4 +77,5 @@ Optional Snakemake git branch to install from `https://github.com/snakemake/snak
     directory: ".test"
     snakefile: "workflow/Snakefile"
     task: "containerize"
+    containerize-args: "apptainer"
 ```
