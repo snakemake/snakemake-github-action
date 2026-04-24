@@ -22,7 +22,7 @@ Preliminary commands to run before the workflow execution.
 
 ### `task`
 
-Whether to run Snakemake or to generate a container image specification (in the form of a Dockerfile) that contains all required environments. Can be either `run` or `containerize`. Default `run`.
+Whether to run Snakemake or to generate a container image specification (`Dockerfile`, `apptainer.def`) that contains all required environments. Can be either `run` or `containerize`. Default `run`.
 
 ### `show-disk-usage-on-error`
 
@@ -35,6 +35,14 @@ Snakemake version to install from conda. Default `*` (latest available version f
 ### `snakemake-branch`
 
 Optional Snakemake git branch to install from `https://github.com/snakemake/snakemake`. If set, this takes precedence over `snakemake-version` and Snakemake is installed from source via pip.
+
+### `install-apptainer`
+
+Whether to install Apptainer (true/false). Default `false`.
+
+### `containerize-args`
+
+Additional arguments for `containerize`, can be one of 'dockerfile', 'apptainer' or '' (defaults to dockerfile).
 
 ## Example usage
 
@@ -69,4 +77,5 @@ Optional Snakemake git branch to install from `https://github.com/snakemake/snak
     directory: ".test"
     snakefile: "workflow/Snakefile"
     task: "containerize"
+    containerize-args: "apptainer"
 ```
